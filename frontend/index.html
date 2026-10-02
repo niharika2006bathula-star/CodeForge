@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CodeForge | Online Compiler &amp; Code Execution Platform</title>
+    <meta name="description" content="CodeForge is a professional online compiler supporting C, C++, Java and Python. Write, compile and execute code instantly in your browser.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body class="dashboard-body">
+
+    <!-- ══════════════════════════════════════════════════
+         NAVIGATION
+    ══════════════════════════════════════════════════ -->
+    <nav class="codex-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-brand" aria-label="CodeForge Home">
+            <div class="nav-logo" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+            </div>
+            <span class="nav-title">CodeForge</span>
+        </a>
+
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks" role="list">
+            <li>
+                <a href="index.html" class="active" aria-current="page">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="compiler.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Compiler
+                </a>
+            </li>
+            <li>
+                <a href="history.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    History
+                </a>
+            </li>
+            <li>
+                <a href="#languages-section">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Languages
+                </a>
+            </li>
+            <li>
+                <a href="#about-section">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    About
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-profile" aria-label="User profile">
+            <div class="nav-profile-avatar" aria-hidden="true">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+            </div>
+            <span id="navUserName">…</span>
+        </div>
+        <button class="nav-logout-btn" id="navLogoutBtn" aria-label="Logout from CodeForge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Logout
+        </button>
+    </nav>
+
+    <!-- ══════════════════════════════════════════════════
+         MAIN DASHBOARD
+    ══════════════════════════════════════════════════ -->
+    <main class="dashboard-main" role="main">
+
+        <!-- ── HERO ──────────────────────────────────── -->
+        <section class="hero-section" aria-labelledby="heroTitle">
+            <div class="hero-text">
+                <div class="hero-greeting">
+                    <span class="status-dot" aria-hidden="true"></span>
+                    Online &amp; Ready
+                </div>
+                <h1 class="hero-title" id="heroTitle">Welcome to CodeForge</h1>
+                <p class="hero-tagline">Your Online Coding and Execution Workspace</p>
+                <p class="hero-subtitle">Write, compile, test and manage programs in C, C++, Java and Python from one workspace — directly in your browser, no installation needed.</p>
+                <div class="hero-actions">
+                    <a href="compiler.html" class="btn btn-green" id="heroStartCoding">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        Start Coding
+                    </a>
+                    <a href="history.html" class="btn btn-secondary" id="heroViewHistory">
+                        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                        View History
+                    </a>
+                </div>
+            </div>
+            <div class="hero-visual" aria-hidden="true">
+                <div class="code-mockup">
+                    <div class="cm-line"><span class="cm-comment">// C++ Quick Sort</span></div>
+                    <div class="cm-line"><span class="cm-keyword">#include</span> <span class="cm-string">&lt;iostream&gt;</span></div>
+                    <div class="cm-line"><span class="cm-keyword">using namespace</span> std;</div>
+                    <div class="cm-line">&nbsp;</div>
+                    <div class="cm-line"><span class="cm-keyword">int</span> <span class="cm-function">main</span>() {</div>
+                    <div class="cm-line">&nbsp;&nbsp;cout &lt;&lt; <span class="cm-string">"Hello, CodeForge!"</span>;</div>
+                    <div class="cm-line">&nbsp;&nbsp;<span class="cm-keyword">return</span> <span class="cm-number">0</span>;</div>
+                    <div class="cm-line">}</div>
+                    <div class="cm-output">→ Hello, CodeForge!</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── STATISTICS ────────────────────────────── -->
+        <section aria-labelledby="statsHeading">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title-text" id="statsHeading">Your Statistics</h2>
+                    <p class="section-subtitle">Based on your local execution history</p>
+                </div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card" role="region" aria-label="Total Executions">
+                    <div class="stat-card-top">
+                        <div class="stat-card-icon blue" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                        </div>
+                        <div class="stat-card-value" id="statTotal">0</div>
+                    </div>
+                    <div class="stat-card-label">Total Executions</div>
+                </div>
+                <div class="stat-card" role="region" aria-label="Successful Runs">
+                    <div class="stat-card-top">
+                        <div class="stat-card-icon green" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                        </div>
+                        <div class="stat-card-value" id="statSuccess">0</div>
+                    </div>
+                    <div class="stat-card-label">Successful Runs</div>
+                </div>
+                <div class="stat-card" role="region" aria-label="Failed Runs">
+                    <div class="stat-card-top">
+                        <div class="stat-card-icon red" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="15" y1="9" x2="9" y2="15"></line><line x1="9" y1="9" x2="15" y2="15"></line></svg>
+                        </div>
+                        <div class="stat-card-value" id="statFailed">0</div>
+                    </div>
+                    <div class="stat-card-label">Failed Runs</div>
+                </div>
+                <div class="stat-card" role="region" aria-label="Success Rate">
+                    <div class="stat-card-top">
+                        <div class="stat-card-icon orange" aria-hidden="true">
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 20V10"></path><path d="M12 20V4"></path><path d="M6 20v-6"></path></svg>
+                        </div>
+                        <div class="stat-card-value" id="statRate">0%</div>
+                    </div>
+                    <div class="stat-card-label">Success Rate</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── LANGUAGE USAGE ────────────────────────── -->
+        <section aria-labelledby="langUsageHeading">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title-text" id="langUsageHeading">Language Usage</h2>
+                    <p class="section-subtitle">Executions per language from your history</p>
+                </div>
+            </div>
+            <div class="lang-usage-card">
+                <div class="lang-usage-list" id="langUsageList">
+                    <!-- Populated by dashboard.js -->
+                </div>
+                <div class="empty-state" id="langUsageEmpty" style="display:none; padding:2rem 1rem;">
+                    <svg width="36" height="36" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    <p>No language data yet. Run some programs first.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── QUICK START ───────────────────────────── -->
+        <section id="languages-section" aria-labelledby="quickStartHeading">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title-text" id="quickStartHeading">Quick Start</h2>
+                    <p class="section-subtitle">Choose a language and start coding immediately</p>
+                </div>
+            </div>
+            <div class="language-grid">
+                <a href="compiler.html?lang=C" class="lang-card" id="langCardC" aria-label="Start coding in C">
+                    <div class="lang-card-header">
+                        <div class="lang-icon c-icon" aria-hidden="true">C</div>
+                        <div class="lang-name">C</div>
+                    </div>
+                    <div class="lang-desc">Fast and efficient system programming. Compile and run C programs using GCC 9.2.</div>
+                    <div class="lang-cta">
+                        Start Coding
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+                <a href="compiler.html?lang=CPP" class="lang-card" id="langCardCPP" aria-label="Start coding in C++">
+                    <div class="lang-card-header">
+                        <div class="lang-icon cpp-icon" aria-hidden="true">C++</div>
+                        <div class="lang-name">C++</div>
+                    </div>
+                    <div class="lang-desc">Object-oriented and high-performance programming. Build and test C++ programs with the STL.</div>
+                    <div class="lang-cta">
+                        Start Coding
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+                <a href="compiler.html?lang=JAVA" class="lang-card" id="langCardJava" aria-label="Start coding in Java">
+                    <div class="lang-card-header">
+                        <div class="lang-icon java-icon" aria-hidden="true">☕</div>
+                        <div class="lang-name">Java</div>
+                    </div>
+                    <div class="lang-desc">Portable object-oriented programming. Compile and execute Java with OpenJDK 13.</div>
+                    <div class="lang-cta">
+                        Start Coding
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+                <a href="compiler.html?lang=PYTHON" class="lang-card" id="langCardPython" aria-label="Start coding in Python">
+                    <div class="lang-card-header">
+                        <div class="lang-icon py-icon" aria-hidden="true">🐍</div>
+                        <div class="lang-name">Python</div>
+                    </div>
+                    <div class="lang-desc">Simple and versatile programming. Write and execute Python 3 programs instantly.</div>
+                    <div class="lang-cta">
+                        Start Coding
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        <!-- ── RECENT ACTIVITY ───────────────────────── -->
+        <section class="activity-section" aria-labelledby="activityHeading">
+            <div class="activity-header">
+                <div>
+                    <h2 class="section-title-text" id="activityHeading">Recent Activity</h2>
+                    <p class="section-subtitle">Your latest 5 code executions</p>
+                </div>
+                <a href="history.html" class="btn btn-secondary" id="viewFullHistory">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    View Full History
+                </a>
+            </div>
+
+            <!-- Activity cards (mobile-friendly, replaces table on small screens) -->
+            <div id="activityCards" class="activity-cards-wrap">
+                <!-- Populated by dashboard.js -->
+            </div>
+
+            <!-- Empty state -->
+            <div class="empty-state" id="activityEmpty" style="display:none; background:var(--bg-card); border:1px solid var(--border-color); border-radius:var(--radius-lg); padding:3rem 1rem;" aria-live="polite">
+                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                <p><strong>No executions yet.</strong></p>
+                <p>Run your first program to see your activity here.</p>
+                <a href="compiler.html" class="btn btn-green" style="margin-top:0.75rem;" id="emptyStartCoding">Start Coding</a>
+            </div>
+        </section>
+
+        <!-- ── PLATFORM STATUS ───────────────────────── -->
+        <section aria-labelledby="statusHeading">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title-text" id="statusHeading">Platform Status</h2>
+                    <p class="section-subtitle">Current system availability</p>
+                </div>
+            </div>
+            <div class="status-grid">
+                <div class="status-card">
+                    <div class="status-indicator online" aria-label="Online"></div>
+                    <div class="status-card-body">
+                        <div class="status-card-title">Frontend</div>
+                        <div class="status-card-value online-text">Online</div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="status-card-icon-right" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="status-card">
+                    <div class="status-indicator" id="backendIndicator" aria-label="Checking"></div>
+                    <div class="status-card-body">
+                        <div class="status-card-title">Compiler Service</div>
+                        <div class="status-card-value" id="backendStatus">Checking...</div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="status-card-icon-right" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                </div>
+                <div class="status-card">
+                    <div class="status-indicator online" aria-label="Available"></div>
+                    <div class="status-card-body">
+                        <div class="status-card-title">Supported Languages</div>
+                        <div class="status-card-value online-text">4 Languages</div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="status-card-icon-right" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                </div>
+                <div class="status-card">
+                    <div class="status-indicator online" aria-label="Active"></div>
+                    <div class="status-card-body">
+                        <div class="status-card-title">Execution Engine</div>
+                        <div class="status-card-value online-text">JDoodle API</div>
+                    </div>
+                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" class="status-card-icon-right" aria-hidden="true"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"></path></svg>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── SUPPORTED LANGUAGES DETAIL ───────────── -->
+        <section aria-labelledby="supportedLangsHeading">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title-text" id="supportedLangsHeading">Supported Languages</h2>
+                    <p class="section-subtitle">All languages available for execution</p>
+                </div>
+            </div>
+            <div class="supported-langs-grid">
+                <div class="supported-lang-card">
+                    <div class="sl-icon c-icon" aria-hidden="true">C</div>
+                    <div class="sl-body">
+                        <div class="sl-name">C</div>
+                        <div class="sl-desc">Fast and efficient system programming language. GCC 9.2 compiler.</div>
+                        <div class="sl-meta">GCC 9.2 &nbsp;·&nbsp; C11 standard</div>
+                    </div>
+                </div>
+                <div class="supported-lang-card">
+                    <div class="sl-icon cpp-icon" aria-hidden="true">C++</div>
+                    <div class="sl-body">
+                        <div class="sl-name">C++</div>
+                        <div class="sl-desc">Object-oriented and high-performance programming with STL support.</div>
+                        <div class="sl-meta">GCC 9.2 &nbsp;·&nbsp; C++17 standard</div>
+                    </div>
+                </div>
+                <div class="supported-lang-card">
+                    <div class="sl-icon java-icon" aria-hidden="true">☕</div>
+                    <div class="sl-body">
+                        <div class="sl-name">Java</div>
+                        <div class="sl-desc">Portable object-oriented programming. Write once, run anywhere.</div>
+                        <div class="sl-meta">OpenJDK 13</div>
+                    </div>
+                </div>
+                <div class="supported-lang-card">
+                    <div class="sl-icon py-icon" aria-hidden="true">🐍</div>
+                    <div class="sl-body">
+                        <div class="sl-name">Python</div>
+                        <div class="sl-desc">Simple and versatile scripting and general-purpose language.</div>
+                        <div class="sl-meta">Python 3.8</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ── ABOUT ─────────────────────────────────── -->
+        <section id="about-section" aria-labelledby="aboutHeading">
+            <div class="section-header">
+                <div>
+                    <h2 class="section-title-text" id="aboutHeading">About CodeForge</h2>
+                </div>
+            </div>
+            <div class="about-card">
+                <div class="about-text">
+                    <p>
+                        <strong>CodeForge</strong> is an online compiler and code execution platform that allows developers and students to write, compile, execute and test programs in multiple programming languages from a single workspace.
+                    </p>
+                    <p>
+                        Powered by the JDoodle Compiler API and a Python Flask backend, CodeForge supports <strong>C</strong>, <strong>C++</strong>, <strong>Java</strong> and <strong>Python</strong>. Built for learning, experimentation and programming practice — no installation or setup required.
+                    </p>
+                </div>
+                <div class="about-meta">
+                    <div class="about-meta-block">
+                        <div class="about-meta-label">Supported Languages</div>
+                        <div class="about-meta-badges">
+                            <span class="lang-badge">C</span>
+                            <span class="lang-badge">C++</span>
+                            <span class="lang-badge">Java</span>
+                            <span class="lang-badge">Python</span>
+                        </div>
+                    </div>
+                    <div class="about-meta-block">
+                        <div class="about-meta-label">Technology Stack</div>
+                        <div class="about-stack">
+                            <div class="about-stack-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="2" y1="12" x2="22" y2="12"></line><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"></path></svg>
+                                <span><strong>Frontend:</strong> HTML, CSS, JavaScript</span>
+                            </div>
+                            <div class="about-stack-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="2" y="3" width="20" height="14" rx="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+                                <span><strong>Backend:</strong> Python Flask</span>
+                            </div>
+                            <div class="about-stack-item">
+                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+                                <span><strong>Execution:</strong> JDoodle Compiler API</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="dashboard-footer" role="contentinfo">
+        <p>CodeForge – Online Compiler &amp; Code Execution Platform &nbsp;·&nbsp; Built with Python Flask &amp; JDoodle API</p>
+    </footer>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>

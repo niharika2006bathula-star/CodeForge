@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | CodeForge — Online Compiler & Code Execution Platform</title>
+    <meta name="description" content="Login to CodeForge, the professional online compiler supporting C, C++, Java and Python.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+</head>
+<body class="auth-body">
+
+    <!-- ══════════════════════════════════════════════════
+         MINIMAL HEADER
+    ══════════════════════════════════════════════════ -->
+    <header class="auth-header" role="banner">
+        <a href="login.html" class="nav-brand auth-brand" aria-label="CodeForge Home">
+            <div class="nav-logo" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+            </div>
+            <span class="nav-title">CodeForge</span>
+        </a>
+    </header>
+
+    <!-- ══════════════════════════════════════════════════
+         LOGIN MAIN
+    ══════════════════════════════════════════════════ -->
+    <main class="auth-main" role="main">
+
+        <!-- Background glow orbs -->
+        <div class="auth-bg-orb auth-bg-orb-1" aria-hidden="true"></div>
+        <div class="auth-bg-orb auth-bg-orb-2" aria-hidden="true"></div>
+
+        <div class="auth-container">
+
+            <!-- Branding above card -->
+            <div class="auth-brand-block" aria-label="CodeForge platform info">
+                <div class="auth-brand-logo" aria-hidden="true">
+                    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="16 18 22 12 16 6"></polyline>
+                        <polyline points="8 6 2 12 8 18"></polyline>
+                    </svg>
+                </div>
+                <h1 class="auth-brand-name">CodeForge</h1>
+                <p class="auth-brand-tagline">Online Compiler &amp; Code Execution Platform</p>
+            </div>
+
+            <!-- Login card -->
+            <div class="auth-card" role="region" aria-label="Login form">
+
+                <div class="auth-card-header">
+                    <h2 class="auth-card-title">Welcome Back</h2>
+                    <p class="auth-card-subtitle">Login to CodeForge</p>
+                </div>
+
+                <!-- Status message -->
+                <div id="loginStatus" class="auth-status" role="alert" aria-live="polite" hidden></div>
+
+                <!-- Login form -->
+                <form id="loginForm" class="auth-form" novalidate aria-label="Login credentials form">
+
+                    <!-- Email field -->
+                    <div class="auth-field" id="loginEmailGroup">
+                        <label for="loginEmail" class="auth-label">Email</label>
+                        <input
+                            type="email"
+                            id="loginEmail"
+                            name="email"
+                            class="auth-input"
+                            placeholder="Enter your email"
+                            required
+                            autocomplete="email"
+                            aria-describedby="loginEmailError"
+                            aria-required="true"
+                        >
+                        <span class="auth-error" id="loginEmailError" role="alert" aria-live="polite"></span>
+                    </div>
+
+                    <!-- Password field -->
+                    <div class="auth-field" id="loginPasswordGroup">
+                        <div class="auth-label-row">
+                            <label for="loginPassword" class="auth-label">Password</label>
+                            <button
+                                type="button"
+                                class="auth-forgot-link"
+                                id="forgotPasswordBtn"
+                                aria-label="Forgot password"
+                            >Forgot Password?</button>
+                        </div>
+                        <div class="auth-input-wrapper">
+                            <input
+                                type="password"
+                                id="loginPassword"
+                                name="password"
+                                class="auth-input"
+                                placeholder="Enter your password"
+                                required
+                                autocomplete="current-password"
+                                aria-describedby="loginPasswordError"
+                                aria-required="true"
+                            >
+                            <button
+                                type="button"
+                                class="auth-toggle-visibility"
+                                id="toggleLoginPassword"
+                                aria-label="Show password"
+                                tabindex="0"
+                            >
+                                <!-- Eye icon (show) -->
+                                <svg class="icon-eye-show" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                                    <circle cx="12" cy="12" r="3"></circle>
+                                </svg>
+                                <!-- Eye-off icon (hide) -->
+                                <svg class="icon-eye-hide" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="display:none;">
+                                    <path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"></path>
+                                    <line x1="1" y1="1" x2="23" y2="23"></line>
+                                </svg>
+                            </button>
+                        </div>
+                        <span class="auth-error" id="loginPasswordError" role="alert" aria-live="polite"></span>
+                    </div>
+
+                    <!-- Submit button -->
+                    <button type="submit" class="auth-btn-primary" id="loginSubmitBtn" aria-label="Login to CodeForge">
+                        <span class="auth-btn-text">Login</span>
+                        <span class="auth-btn-spinner" aria-hidden="true" hidden>
+                            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                                <path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/>
+                            </svg>
+                        </span>
+                    </button>
+
+                </form>
+
+                <!-- Divider -->
+                <div class="auth-divider" aria-hidden="true">
+                    <span class="auth-divider-line"></span>
+                    <span class="auth-divider-text">or</span>
+                    <span class="auth-divider-line"></span>
+                </div>
+
+                <!-- Signup link -->
+                <p class="auth-switch-text">
+                    Don't have an account?
+                    <a href="signup.html" class="auth-link" id="createAccountLink">Create Account</a>
+                </p>
+
+            </div>
+
+            <!-- Forgot password inline message -->
+            <div id="forgotPasswordMsg" class="auth-inline-msg" role="status" aria-live="polite" hidden>
+                <div class="auth-inline-msg-inner">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                        <circle cx="12" cy="12" r="10"></circle>
+                        <line x1="12" y1="8" x2="12" y2="12"></line>
+                        <line x1="12" y1="16" x2="12.01" y2="16"></line>
+                    </svg>
+                    <span>Password recovery will be available in a future version.</span>
+                    <button type="button" class="auth-inline-msg-close" id="forgotMsgClose" aria-label="Close message">&#10005;</button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <script src="login.js"></script>
+</body>
+</html>

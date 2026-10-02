@@ -1,0 +1,49 @@
+# Environment files & Secrets
+.env
+.env.*
+!.env.example
+backend/.env
+backend/.env.*
+!backend/.env.example
+*.env
+
+# Python Virtual Environments
+.venv/
+venv/
+env/
+ENV/
+
+# Python Cache & Bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+.pytest_cache/
+
+# SQLite Databases & Local User/Test Data
+*.db
+*.sqlite
+*.sqlite3
+backend/codeforge.db
+
+# Logs & Temporary Files
+*.log
+*.tmp
+*.temp
+*.bak
+*.swp
+backend/find_pw.py
+
+# IDEs & Machine Specific Configs
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Antigravity / Gemini IDE Generated Files
+.gemini/
+.antigravity/
+
+# Node dependencies (if present)
+node_modules/

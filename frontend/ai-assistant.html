@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Assistant | CodeForge</title>
+    <meta name="description" content="Get AI-powered help to explain, debug, and optimize your code with CodeForge AI Assistant.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <link rel="stylesheet" href="ai-assistant.css">
+</head>
+<body class="ai-assistant-body">
+
+    <!-- Navigation -->
+    <nav class="codex-nav" role="navigation" aria-label="Main navigation">
+        <a href="index.html" class="nav-brand" aria-label="CodeForge Home">
+            <div class="nav-logo" aria-hidden="true">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="16 18 22 12 16 6"></polyline>
+                    <polyline points="8 6 2 12 8 18"></polyline>
+                </svg>
+            </div>
+            <span class="nav-title">CodeForge</span>
+        </a>
+
+        <button class="nav-hamburger" id="navHamburger" aria-label="Toggle navigation" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+
+        <ul class="nav-links" id="navLinks" role="list">
+            <li>
+                <a href="index.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect></svg>
+                    Dashboard
+                </a>
+            </li>
+            <li>
+                <a href="compiler.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Compiler
+                </a>
+            </li>
+            <li>
+                <a href="history.html">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    History
+                </a>
+            </li>
+            <li>
+                <a href="ai-assistant.html" class="active" aria-current="page">
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                    AI Assistant
+                </a>
+            </li>
+        </ul>
+
+        <div class="nav-profile" aria-label="User profile">
+            <div class="nav-profile-avatar" aria-hidden="true">D</div>
+            <span id="navUserName" class="nav-user-name">...</span>
+        </div>
+        <button class="nav-logout-btn" id="navLogoutBtn" aria-label="Logout from CodeForge">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+                <polyline points="16 17 21 12 16 7"></polyline>
+                <line x1="21" y1="12" x2="9" y2="12"></line>
+            </svg>
+            Logout
+        </button>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="ai-main" role="main">
+        <!-- Left Panel: Chat Interface -->
+        <section class="ai-chat-panel" aria-label="AI Chat">
+            <!-- Panel Header -->
+            <div class="ai-chat-header">
+                <div class="ai-header-info">
+                    <div class="ai-avatar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                            <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="ai-title">CodeForge AI</h1>
+                        <p class="ai-subtitle">Your intelligent programming tutor</p>
+                    </div>
+                </div>
+                <div class="ai-header-actions">
+                    <span class="ai-status-dot" id="aiStatusDot" aria-live="polite" title="AI status"></span>
+                    <button id="clearChatBtn" class="btn btn-secondary ai-clear-btn" aria-label="Clear chat history">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                        Clear Chat
+                    </button>
+                </div>
+            </div>
+
+            <!-- Chat Messages Area -->
+            <div class="ai-messages" id="aiMessages" role="log" aria-live="polite" aria-label="Chat messages">
+                <!-- Welcome message -->
+                <div class="ai-message ai-message--assistant" id="welcomeMsg">
+                    <div class="ai-message-avatar" aria-hidden="true">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2z"></path><path d="M8 14s1.5 2 4 2 4-2 4-2"></path><line x1="9" y1="9" x2="9.01" y2="9"></line><line x1="15" y1="9" x2="15.01" y2="9"></line></svg>
+                    </div>
+                    <div class="ai-message-content">
+                        <div class="ai-message-bubble">
+                            <p>👋 Hi! I'm <strong>CodeForge AI</strong>, your programming tutor.</p>
+                            <p>I can help you:</p>
+                            <ul>
+                                <li>🔍 <strong>Explain</strong> code and programming concepts</li>
+                                <li>🐛 <strong>Debug</strong> errors and compiler output</li>
+                                <li>🔧 <strong>Fix</strong> bugs with corrected code</li>
+                                <li>⚡ <strong>Optimize</strong> your code for performance</li>
+                            </ul>
+                            <p>Use the quick action buttons below, or ask me anything!</p>
+                        </div>
+                        <span class="ai-message-time">CodeForge AI</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Compiler Context Banner (shown when context is loaded) -->
+            <div class="ai-context-banner" id="aiContextBanner" style="display:none;" role="status">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                <span id="aiContextLabel">Compiler context loaded</span>
+                <button id="clearContextBtn" class="ai-context-dismiss" aria-label="Clear compiler context" title="Clear context">×</button>
+            </div>
+
+            <!-- Quick Action Buttons -->
+            <div class="ai-quick-actions" role="group" aria-label="Quick AI actions">
+                <button class="ai-quick-btn" id="quickExplain" data-mode="explain" aria-label="Explain Code">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    Explain Code
+                </button>
+                <button class="ai-quick-btn" id="quickDebug" data-mode="debug" aria-label="Find Error">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    Find Error
+                </button>
+                <button class="ai-quick-btn" id="quickFix" data-mode="fix" aria-label="Suggest Fix">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    Suggest Fix
+                </button>
+                <button class="ai-quick-btn" id="quickConcept" data-mode="concept" aria-label="Explain Concept">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5"></path><path d="M2 12l10 5 10-5"></path></svg>
+                    Explain Concept
+                </button>
+                <button class="ai-quick-btn" id="quickOptimize" data-mode="optimize" aria-label="Optimize Code">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="23 6 13.5 15.5 8.5 10.5 1 18"></polyline><polyline points="17 6 23 6 23 12"></polyline></svg>
+                    Optimize Code
+                </button>
+            </div>
+
+            <!-- Input Area -->
+            <div class="ai-input-area">
+                <div class="ai-input-wrapper">
+                    <textarea
+                        id="aiInput"
+                        class="ai-textarea"
+                        placeholder="Ask me anything about code... (Enter to send, Shift+Enter for new line)"
+                        rows="3"
+                        maxlength="2000"
+                        spellcheck="true"
+                        aria-label="Ask AI a question"
+                        aria-describedby="aiCharCount"
+                    ></textarea>
+                    <div class="ai-input-footer">
+                        <span class="ai-char-count" id="aiCharCount" aria-live="polite">0 / 2000</span>
+                        <div class="ai-input-actions">
+                            <select id="aiModeSelect" class="ai-mode-select" aria-label="Select AI mode">
+                                <option value="chat">💬 Chat</option>
+                                <option value="explain">🔍 Explain</option>
+                                <option value="debug">🐛 Debug</option>
+                                <option value="fix">🔧 Fix</option>
+                                <option value="concept">📚 Concept</option>
+                                <option value="optimize">⚡ Optimize</option>
+                            </select>
+                            <button id="aiSendBtn" class="btn btn-primary ai-send-btn" aria-label="Send message">
+                                <span id="aiSendIcon" aria-hidden="true">
+                                    <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"></path></svg>
+                                </span>
+                                <span id="aiSendText">Send</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Right Panel: Context & Info -->
+        <aside class="ai-sidebar" aria-label="AI context and information">
+            <!-- Compiler Context Card -->
+            <div class="ai-sidebar-card" id="contextCard">
+                <div class="ai-sidebar-card-header">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                    Compiler Context
+                </div>
+                <div id="contextCardBody" class="ai-sidebar-card-body">
+                    <p class="ai-sidebar-empty">No compiler context loaded.</p>
+                    <p class="ai-sidebar-hint">
+                        Use the <strong>"Ask AI"</strong> button in the
+                        <a href="compiler.html" class="ai-link">Compiler</a> to automatically
+                        load your code and output here.
+                    </p>
+                </div>
+            </div>
+
+            <!-- Tips Card -->
+            <div class="ai-sidebar-card">
+                <div class="ai-sidebar-card-header">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                    How to use
+                </div>
+                <div class="ai-sidebar-card-body">
+                    <div class="ai-tip">
+                        <span class="ai-tip-icon">⌨️</span>
+                        <span><strong>Enter</strong> to send, <strong>Shift+Enter</strong> for a new line</span>
+                    </div>
+                    <div class="ai-tip">
+                        <span class="ai-tip-icon">🎯</span>
+                        <span>Select a <strong>mode</strong> to guide the AI's response style</span>
+                    </div>
+                    <div class="ai-tip">
+                        <span class="ai-tip-icon">💻</span>
+                        <span>Click <strong>"Ask AI"</strong> in the Compiler to auto-load your code</span>
+                    </div>
+                    <div class="ai-tip">
+                        <span class="ai-tip-icon">🔧</span>
+                        <span>AI suggestions won't execute automatically — you choose when to apply them</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apply Fix Card (shown when AI suggests code) -->
+            <div class="ai-sidebar-card ai-apply-card" id="applyFixCard" style="display:none;">
+                <div class="ai-sidebar-card-header">
+                    <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z"></path></svg>
+                    Apply Suggested Fix
+                </div>
+                <div class="ai-sidebar-card-body">
+                    <p class="ai-sidebar-hint">The AI has suggested a code fix. Click below to copy it to the compiler — you must manually run it.</p>
+                    <button id="applyFixBtn" class="btn btn-primary" style="width:100%; margin-top:0.5rem;" aria-label="Copy suggested fix to compiler">
+                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><polyline points="16 18 22 12 16 6"></polyline><polyline points="8 6 2 12 8 18"></polyline></svg>
+                        Open in Compiler
+                    </button>
+                </div>
+            </div>
+        </aside>
+    </main>
+
+    <script src="auth-guard.js"></script>
+    <script src="ai-assistant.js"></script>
+</body>
+</html>
